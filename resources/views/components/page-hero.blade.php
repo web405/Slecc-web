@@ -1,0 +1,2 @@
+@props(['eyebrow'=>'DISCOVER SLECC','title','subtitle'=>'','image'=>'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1800&q=85'])
+<section class="pagehero" style="--hero-image:url('{{ $image }}')"><div class="container"><span class="eyebrow light">{{ $eyebrow }}</span><h1>{{ $title }}</h1><p>{{ $subtitle }}</p></div></section>

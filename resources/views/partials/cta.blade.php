@@ -1,0 +1,1 @@
+<section class="ctasection"><div class="container"><div class="cta"><div><span class="eyebrow light">READY WHEN YOU ARE</span><h2>Make your next event <em>remarkable.</em></h2><p>Explore your options with our team and request a tailored proposal.</p></div><a class="btn btn-gold" href="{{ route('contact') }}">Plan your event ↗</a></div></div></section>
