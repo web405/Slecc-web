@@ -1,1 +1,82 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin | SLECC</title><link rel="stylesheet" href="{{ asset('css/admin.css') }}"></head><body><header class="adminbar"><a href="{{ route('admin.dashboard') }}"><b>SLECC</b> / ADMIN</a><nav><a href="{{ route('home') }}" target="_blank" rel="noopener">View website ↗</a><form method="post" action="{{ route('admin.logout') }}">@csrf<button>Sign out</button></form></nav></header><div class="shell"><aside><a href="{{ route('admin.dashboard') }}">Dashboard</a>@foreach(['venues'=>'Venues','services'=>'Services','events'=>'Events','clients'=>'Clients'] as $key=>$label)<a href="{{ route('admin.items',['section'=>$key]) }}">{{ $label }}</a>@endforeach<a href="{{ route('admin.enquiries') }}">Enquiries</a></aside><main>@if(session('success'))<div class="notice">{{ session('success') }}</div>@endif@if($errors->any())<div class="error">@foreach($errors->all() as $error)<p>{{ $error }}</p>@endforeach</div>@endif@yield('content')</main></div></body></html>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin | SLECC</title>
+
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+</head>
+
+<body>
+
+<header class="adminbar">
+    <a href="{{ route('admin.dashboard') }}">
+        <b>SLECC</b> / ADMIN
+    </a>
+
+    <nav>
+        <a href="{{ route('home') }}" target="_blank" rel="noopener">
+            View website ↗
+        </a>
+
+        <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <button type="submit">Sign out</button>
+        </form>
+    </nav>
+</header>
+
+<div class="shell">
+
+    <aside>
+        <a href="{{ route('admin.dashboard') }}">
+            Dashboard
+        </a>
+
+        @foreach ([
+            'venues' => 'Venues',
+            'services' => 'Services',
+            'events' => 'Events',
+            'clients' => 'Clients'
+        ] as $key => $label)
+
+            <a href="{{ route('admin.items', ['section' => $key]) }}">
+                {{ $label }}
+            </a>
+
+        @endforeach
+
+        <a href="{{ route('admin.enquiries') }}">
+            Enquiries
+        </a>
+    </aside>
+
+    <main>
+
+        @if (session('success'))
+            <div class="notice">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="error">
+
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+
+            </div>
+        @endif
+
+        @yield('content')
+
+    </main>
+
+</div>
+
+</body>
+</html>
